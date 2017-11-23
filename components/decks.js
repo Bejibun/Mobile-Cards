@@ -20,7 +20,7 @@ class Decks extends React.Component {
       onPress={() => this.props.navigation.navigate(
               'Deck',
               {
-                entryId: item.key,
+                deckId: item.key,
                 navTitle: item.title
               }
             )}
@@ -28,8 +28,7 @@ class Decks extends React.Component {
       <View>
         <Card
           title={item.title}
-          subtitle={`${item.questions.length} cards`}
-        >
+          subtitle={`${item.questions.length} cards`}>
             <Text style={{textAlign: 'center'}}>
               {`${item.questions.length} cards`}
             </Text>

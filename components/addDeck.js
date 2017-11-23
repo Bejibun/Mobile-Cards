@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { KeyboardAvoidingView, TouchableOpacity, Text, Keyboard, Platform, StyleSheet } from 'react-native';
 import { purple, white } from '../utils/colors';
-import { NavigationActions } from 'react-navigation';
 import { Card, FormInput, FormValidationMessage } from 'react-native-elements';
 import { saveDeckTitle } from '../utils/api';
 
@@ -15,25 +14,25 @@ function SubmitBtn ({ onPress }) {
   )
 }
 
-class AddDeck extends React.Component {
+export default class AddDeck extends React.Component {
   state = {
-    currentTitle: '',
+    titleText: '',
     errMsg: false
   };
 
   handleSubmit = () => {
-    if (this.state.currentTitle) {
-      const { currentTitle } = this.state;
-      saveDeckTitle(currentTitle);
+    if (this.state.titleText) {
+      const { titleText } = this.state;
+      saveDeckTitle(titleText);
       this.setState({
         errMsg: false,
-        currentTitle: ''
+        titleText: ''
       });
       this.props.navigation.navigate(
         'Deck',
         {
-          navTitle: currentTitle,
-          entryId: currentTitle
+          entryId: titleText,
+          navTitle: titleText
         },
         Keyboard.dismiss()
       );
@@ -53,8 +52,8 @@ class AddDeck extends React.Component {
       >
         <Card title="What is the title of your new deck?" >
           <FormInput
-            onChangeText={currentTitle => this.setState({ currentTitle })}
-            value={this.state.currentTitle}
+            onChangeText={titleText => this.setState({ titleText })}
+            value={this.state.titleText}
           />
           <FormValidationMessage>
             {this.state.errMsg ? 'This field is required': ''}
@@ -109,6 +108,5 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
   },
-})
-
-export default AddDeck;
+}
+)

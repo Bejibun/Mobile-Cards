@@ -4,7 +4,7 @@ import { red, orange, blue, lightPurp, pink, white } from './colors'
 import { Notifications, Permissions } from 'expo';
 // import * as HCONSTANT from './helperConstants';
 
-export const NOTIFICATION_LOCAL_KEY = 'MobileCards:Notification';
+export const NOTIFICATION_LOCAL_KEY = 'MobileCards:notification';
 
 //Add Local Notification
 export function addLocalNotification() {
@@ -35,7 +35,7 @@ export function setLocalNotification() {
     .then(JSON.parse)
     .then(data => {
       if (data === null) {
-        Permissions.askAsync(Permissions.NOTIFICATION_LOCAL_KEY)
+        Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
             if (status === 'granted') {
               Notifications.cancelAllScheduledNotificationsAsync();

@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Keyboard } from 'react-native';
 import { Card, FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
 import { addCardToDeck } from '../utils/api';
 
-class AddQuestion extends React.Component {
+class AddDeck extends React.Component {
   state = {
     questionInput: '',
     answerInput: '',
@@ -21,6 +21,7 @@ class AddQuestion extends React.Component {
       const { questionInput, answerInput } = this.state;
       const title = this.props.navigation.state.params.title;
 
+      console.log("Title Nav",title,this.props.navigation.state.params);
       const card = {
         question: questionInput,
         answer: answerInput
@@ -67,7 +68,6 @@ class AddQuestion extends React.Component {
           </FormValidationMessage>
           <Button
             title="Submit"
-            raised
             backgroundColor="blue"
             onPress={this.handleSubmit}
           />
@@ -77,4 +77,4 @@ class AddQuestion extends React.Component {
   }
 }
 
-export default AddQuestion;
+export default AddDeck;
