@@ -13,7 +13,7 @@ npm install
 npm start
 ```
 
-##Features:
+## Features:
 
 Use create-react-native-app to build your project.
 Allow users to create a deck which can hold an unlimited number of cards.
