@@ -13,7 +13,7 @@ export function addLocalNotification() {
     body: "Take your Quiz Now!",
 
     android: {
-      priority: 'max',
+      priority: 'low',
       sound: true,
       sticky: true,
       vibrate: true

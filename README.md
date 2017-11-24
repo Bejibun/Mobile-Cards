@@ -2,6 +2,8 @@
 
 Create your own quiz game by adding a question and answer on the card, and the card is shuffled when the quiz starts.
 
+Fully test on Iphone 6 & Android Simulator.
+
 Instruction to install React native
 
 ```bash

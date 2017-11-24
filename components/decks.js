@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { KeyboardAvoidingView, TouchableOpacity, FlatList, View, Text, Keyboard } from 'react-native';
+import { KeyboardAvoidingView, TouchableOpacity, FlatList, View, Text, Keyboard, StyleSheet } from 'react-native';
 import { Badge, Button, Card, FormInput, FormValidationMessage } from 'react-native-elements'
 import { getDecksAction } from '../actions';
 import { orange, white } from '../utils/colors';
@@ -14,6 +14,8 @@ class Decks extends React.Component {
   componentDidUpdate() {
     this.props.getDecksAction()
   }
+
+  _keyExtractor = (data, renderItem) => {this.props.DBdata,this.renderItem};
 
   renderItem = ({ item }) =>
     <TouchableOpacity
@@ -43,8 +45,7 @@ class Decks extends React.Component {
         {this.props.DBdata.length > 0
           ?
           <FlatList
-            data={this.props.DBdata}
-            renderItem={this.renderItem}
+            keyExtractor={this._keyExtractor}
           />
         : <Card title="Create Your Deck!"/>
         }

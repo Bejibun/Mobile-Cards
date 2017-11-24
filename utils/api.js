@@ -35,6 +35,10 @@ export function getDecks() {
   });
 }
 
+export function deleteDeck(title) {
+  return AsyncStorage.removeItem(deckTitle);
+}
+
 //Get specific Deck
 export function getDeck(id) {
   return AsyncStorage.getItem(id);

@@ -31,7 +31,7 @@ export default class AddDeck extends React.Component {
       this.props.navigation.navigate(
         'Deck',
         {
-          entryId: titleText,
+          deckId: titleText,
           navTitle: titleText
         },
         Keyboard.dismiss()
