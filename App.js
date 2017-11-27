@@ -90,7 +90,7 @@ const MainNavigator =  StackNavigator({
   }
 });
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   componentDidMount() {
     setLocalNotification();
   }

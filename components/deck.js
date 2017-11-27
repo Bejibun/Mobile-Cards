@@ -14,11 +14,11 @@ class Deck extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getDeckDetailAction(this.props.navigation.state.params.entryId);
+    this.props.getDeckDetailAction(this.props.navigation.state.params.deckId);
   }
 
   componentDidUpdate() {
-    this.props.getDeckDetailAction(this.props.navigation.state.params.entryId);
+    this.props.getDeckDetailAction(this.props.navigation.state.params.deckId);
   }
 
   deleteItem() {
@@ -51,7 +51,7 @@ class Deck extends React.Component {
                     'AddQuestion',
                     {
                       navTitle: this.props.title,
-                      title: this.props.navigation.state.params.title
+                      title: this.props.title
                     }
                   );
                 }
@@ -100,9 +100,9 @@ const styles = {
 
 const mapStateToProps = state => {
 
-  const { currentTitle, questions } = state.deck ? state.deck : ('', []);
+  const { title, questions } = state.deck ? state.deck : ('', []);
 
-  return { currentTitle, questions };
+  return { title, questions };
 };
 
 export default connect(mapStateToProps, {

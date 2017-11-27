@@ -5,6 +5,12 @@ import { NavigationActions } from 'react-navigation';
 import { removeLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class Quiz extends React.PureComponent {
+
+  constructor(props){
+    super(props)
+    this.reset = this.reset.bind(this);
+  }
+
   state = {
     showQuestion: true,
     questions: this.shuffle(),
@@ -43,7 +49,7 @@ class Quiz extends React.PureComponent {
   }
 
   shuffle() {
-    const {questions} = this.props.navigation.state.params.questions;
+    const { questions } = this.props.navigation.state.params;
     let i = questions.length-1;
 
     do {
@@ -97,7 +103,7 @@ class Quiz extends React.PureComponent {
             onPress={() => {
               this.setState({
                 currentQuestion: currentQuestion+1,
-                correctAnswers: correctAnswers+1
+                correctScore: correctScore+1
               });
             }}
           />

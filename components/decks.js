@@ -15,7 +15,7 @@ class Decks extends React.PureComponent {
     this.props.getDecksAction()
   }
 
-  _keyExtractor = (data, renderItem) => {this.props.DBdata,this.renderItem};
+  _keyExtractor = (data, renderItem) => {this.props.DBinfo,this.renderItem};
 
   renderItem = ({ item }) =>
     <TouchableOpacity
@@ -39,14 +39,13 @@ class Decks extends React.PureComponent {
       </View>
     </TouchableOpacity>;
 
-
   render() {
     return (
       <View style={styles.containerStyle}>
-        {this.props.DBdata.length > 0
+        {this.props.DBinfo.length > 0
           ?
           <FlatList
-            data={this.props.DBdata}
+            data={this.props.DBinfo}
           renderItem={this.renderItem}
           />
         : <Card title="Create Your Deck!"/>
@@ -64,9 +63,9 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const DBdata = state.decks;
+  const DBinfo = state.decks;
 
-  return { DBdata };
+  return { DBinfo };
 };
 
 export default connect(mapStateToProps, { getDecksAction })(Decks);
