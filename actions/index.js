@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native';
-import { getDecks, getDeck } from '../utils/api';
+import { getDecks, getDeck,deleteDeck } from '../utils/api';
 import * as ACTIONS from './types';
 
 export function getDecksAction() {
@@ -18,7 +18,7 @@ export function getDeckDetailAction(deckId){
 
 export function deleteDeckAction(deckTitle) {
   return (dispatch) => {
-    AsyncStorage.removeItem(deckTitle)
+    deleteDeck(deckTitle)
       .then(getDecks().then(data => {
           dispatch({ type: ACTIONS.TYPES_DECK_DELETE, payload: data})
         })

@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Keyboard } from 'react-native';
 import { Card, FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements';
 import { addCardToDeck } from '../utils/api';
 
-class AddDeck extends React.Component {
+class AddDeck extends React.PureComponent {
   state = {
     questionInput: '',
     answerInput: '',
@@ -20,8 +20,8 @@ class AddDeck extends React.Component {
     if (this.state.questionInput && this.state.answerInput) {
       const { questionInput, answerInput } = this.state;
       const title = this.props.navigation.state.params.title;
-
-      console.log("Title Nav",title,this.props.navigation.state.params);
+      // 
+      // console.log("Title Nav",title,this.props.navigation.state.params);
       const card = {
         question: questionInput,
         answer: answerInput

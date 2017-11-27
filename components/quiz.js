@@ -1,10 +1,10 @@
 import React from 'react';
-import { KeyboardAvoidingView, Keyboard, View, Text } from 'react-native';
+import { KeyboardAvoidingView, Keyboard, View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, Card, Badge, Button, FormInput, FormValidationMessage } from 'react-native-elements'
 import { NavigationActions } from 'react-navigation';
 import { removeLocalNotification, setLocalNotification } from '../utils/helpers';
 
-class Quiz extends React.Component {
+class Quiz extends React.PureComponent {
   state = {
     showQuestion: true,
     questions: this.shuffle(),
@@ -43,7 +43,7 @@ class Quiz extends React.Component {
   }
 
   shuffle() {
-    const questions = this.props.navigation.state.params.questions;
+    const {questions} = this.props.navigation.state.params.questions;
     let i = questions.length-1;
 
     do {
@@ -118,7 +118,7 @@ class Quiz extends React.Component {
           buttonStyle={styles.buttonStyle}
           title="Start Over"
           backgroundColor='blue'
-          onPress={() => this.reset()}
+          onPress={this.reset}
         />
         <Button
           buttonStyle={[styles.buttonStyle, { marginTop: 10 }]}

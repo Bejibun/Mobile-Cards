@@ -1,16 +1,20 @@
 import React from 'react';
 import { StatusBar,View, Button} from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { Ionicons } from '@expo/vector-icons';
 import { Constants } from 'expo';
-import MainNavigator from './components/mainNavigator';
+import Main from './components/main';
+import Deck from './components/deck';
+import AddDeck from './components/addDeck';
+import AddQuestion from './components/addQuestion';
+import Quiz from './components/quiz';
 import reducer from './reducers';
 import { setLocalNotification } from './utils/helpers';
-import Main from './components/main';
-import AddDeck from './components/addDeck';
 import { Font, AppLoading } from 'expo';
+
 
 function CustomStatusBar ({ backgroundColor, ...props }) {
   return (
@@ -38,6 +42,51 @@ const Tabs = TabNavigator({
     navigationOptions: {
       tabBarLabel: 'Add Deck',
       tabBarIcon: ({ tintColor }) => <Ionicons name="md-add" size={30} color={tintColor} />
+    }
+  }
+});
+
+const MainNavigator =  StackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      title: "Deck List",
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "gray"
+
+      }
+    }
+  },
+  Deck: {
+    screen: Deck,
+    navigationOptions: {
+      title: 'Details',
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "gray"
+
+      }
+    }
+  },
+  AddQuestion: {
+    screen: AddQuestion,
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "gray"
+
+      }
+    }
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: "gray"
+
+      }
     }
   }
 });

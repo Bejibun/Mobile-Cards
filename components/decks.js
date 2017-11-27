@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { KeyboardAvoidingView, TouchableOpacity, FlatList, View, Text, Keyboard, StyleSheet } from 'react-native';
 import { Badge, Button, Card, FormInput, FormValidationMessage } from 'react-native-elements'
 import { getDecksAction } from '../actions';
 import { orange, white } from '../utils/colors';
 
-class Decks extends React.Component {
+class Decks extends React.PureComponent {
 
   componentDidMount() {
     this.props.getDecksAction();
@@ -15,7 +15,7 @@ class Decks extends React.Component {
     this.props.getDecksAction()
   }
 
-  _keyExtractor = (data, renderItem) => {this.props.DBdata,this.renderItem};
+  _keyExtractor = (data, renderItem) => {this.props.DBinfo,this.renderItem};
 
   renderItem = ({ item }) =>
     <TouchableOpacity
@@ -23,7 +23,8 @@ class Decks extends React.Component {
               'Deck',
               {
                 deckId: item.key,
-                navTitle: item.title
+                navTitle: item.title,
+                title: item.title
               }
             )}
     >
@@ -42,7 +43,7 @@ class Decks extends React.Component {
   render() {
     return (
       <View style={styles.containerStyle}>
-        {this.props.DBdata.length > 0
+        {this.props.DBinfo.length > 0
           ?
           <FlatList
             keyExtractor={this._keyExtractor}
@@ -62,9 +63,9 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-  const DBdata = state.decks;
+  const DBinfo = state.decks;
 
-  return { DBdata };
+  return { DBinfo };
 };
 
 export default connect(mapStateToProps, { getDecksAction })(Decks);

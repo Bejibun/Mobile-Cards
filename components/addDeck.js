@@ -14,7 +14,7 @@ function SubmitBtn ({ onPress }) {
   )
 }
 
-export default class AddDeck extends React.Component {
+export default class AddDeck extends React.PureComponent {
   state = {
     titleText: '',
     errMsg: false
@@ -32,7 +32,8 @@ export default class AddDeck extends React.Component {
         'Deck',
         {
           deckId: titleText,
-          navTitle: titleText
+          navTitle: titleText,
+          title: titleText
         },
         Keyboard.dismiss()
       );
