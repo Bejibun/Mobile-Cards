@@ -19,7 +19,6 @@ export function getDecks() {
         // get at each store's key/value so you can work with it
         let key = store[i][0];
         let value = JSON.parse(store[i][1]);
-        // console.log("get decks",key,value);
         if (value) {
           return {
             key,
@@ -37,7 +36,7 @@ export function getDecks() {
 }
 
 export function deleteDeck(title) {
-  return AsyncStorage.removeItem(deckTitle);
+  return AsyncStorage.removeItem(title);
 }
 
 //Get specific Deck

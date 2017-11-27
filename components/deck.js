@@ -36,7 +36,7 @@ class Deck extends React.Component {
           alignContent: 'center'
         }}
       >
-        <Card title={this.props.title} >
+        <Card title={this.props.navigation.state.params.title} >
           <Text style={{marginBottom: 10, textAlign: 'center'}}>
             {this.props.questions ? this.props.questions.length : 0} cards
           </Text>
@@ -51,7 +51,7 @@ class Deck extends React.Component {
                     'AddQuestion',
                     {
                       navTitle: this.props.title,
-                      title: this.props.title
+                      title: this.props.navigation.state.params.title
                     }
                   );
                 }
